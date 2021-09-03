@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:rim="http://www.blackberry.com/ns/widgets"
+  xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-agora-openduo" version="1.0.0">
+
+  <name>Agora</name>
+  <description>A cordova plugin, a JS version of Agora's OpenDuo implementaion SDK</description>
+  <license>MIT</license>
+  <keywords>cordova,Agora,openduo,ionic,cordova-ios,cordova-android</keywords>
+
+  <!-- js module-->
+  <js-module src="www/agora.js" name="Agora">
+    <clobbers target="Agora" />
+  </js-module>
+
+
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="Agora">
+        <param name="ios-package" value="Agora" />
+      </feature>
+    </config-file>
+    <source-file src="src/ios/Agora.swift" />
+    <source-file src="src/ios/AgoraEngine.swift" />
+    <source-file src="src/ios/CallCenter.swift" />
+    <source-file src="src/ios/VideoChatViewController.swift" />
+    <source-file src="src/ios/AureolaView.swift" />
+    <source-file src="src/ios/CallingViewController.swift" />
+    <source-file src="src/ios/Helper.swift" />
+    <resource-file src="src/ios/Images.xcassets" target-dir=""/>
+    <resource-file src="src/ios/ring.mp3" target-dir=""/>
+    <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+    <framework src="AgoraRtm_iOS" type="podspec" spec="~> 1.2.2" />
+    <framework src="AgoraRtcEngine_iOS" type="podspec" spec="~> 3.1.0" />
+    <framework src="Kingfisher" type="podspec" spec="~> 6.0" />
+  </platform>
+
+
+  <!-- android -->
+  <platform name="android">
+    <framework src="src/android/agora.gradle" custom="true" type="gradleReference"/>
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="Agora">
+        <param name="android-package" value="io.openduo.Agora"/>
+      </feature>
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <activity android:name="io.openduo.activity.CallActivity" />
+      <activity android:name="io.openduo.activity.VideoActivity" />
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.INTERNET"/>
+      <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+      <uses-permission android:name="android.permission.BLUETOOTH"/>
+      <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+      <uses-permission android:name="android.permission.WAKE_LOCK"/>
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.CAMERA"/>
+      <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    </config-file>
+
+    <source-file src="src/android/io/agora/openduo" target-dir="java/io"/>
+    <resource-file src="src/android/res" target="res" />
+
+  </platform>
+</plugin>

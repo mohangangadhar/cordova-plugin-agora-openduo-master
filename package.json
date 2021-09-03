@@ -1,0 +1,29 @@
+{
+  "name": "cordova-plugin-agora-openduo",
+  "version": "1.0.0",
+  "description": "A cordova plugin, a JS version of Wechat SDK",
+  "cordova": {
+    "id": "cordova-plugin-agora-openduo",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+
+  "keywords": [
+    "cordova",
+    "agora",
+    "openduo",
+    "ionic",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}
